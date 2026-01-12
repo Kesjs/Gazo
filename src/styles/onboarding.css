@@ -1,0 +1,105 @@
+/* Onboarding Styles */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0) rotate(45deg);
+  }
+  40%, 43% {
+    transform: translate3d(0, -8px, 0) rotate(45deg);
+  }
+  70% {
+    transform: translate3d(0, -4px, 0) rotate(45deg);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) rotate(45deg);
+  }
+}
+
+.onboarding-highlight {
+  animation: pulse-glow 2s infinite;
+  position: relative;
+}
+
+.onboarding-highlight::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #3b82f6, #06b6d4, #3b82f6);
+  border-radius: inherit;
+  z-index: -1;
+  animation: pulse-glow 2s infinite;
+}
+
+/* Smooth scrolling for onboarding navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 767px) {
+  .onboarding-modal {
+    font-size: 14px;
+  }
+  
+  .onboarding-modal .onboarding-content {
+    padding: 1rem;
+  }
+  
+  .onboarding-modal .onboarding-footer {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .onboarding-modal .onboarding-progress {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ensure buttons are always touchable */
+.onboarding-button {
+  min-height: 44px; /* iOS touch target minimum */
+  min-width: 44px;
+}
+
+/* Improved overlay for mobile */
+@media (max-width: 767px) {
+  .onboarding-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Onboarding modal entrance animations */
+.onboarding-modal-enter {
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+}
+
+.onboarding-modal-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: all 0.3s ease-out;
+}
+
+.onboarding-modal-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.onboarding-modal-exit-active {
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+  transition: all 0.3s ease-in;
+}
